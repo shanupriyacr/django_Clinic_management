@@ -1,0 +1,66 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Book Appointment{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <h2>Book Appointment</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="patient_name" class="form-label">Patient Name</label>
+                <input type="text" class="form-control" id="patient_name" name="patient_name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="place" class="form-label">Place</label>
+                <input type="text" class="form-control" id="place" name="place" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="time_slot" class="form-label">Time Slot</label>
+                <input type="time" class="form-control" id="time_slot" name="time_slot" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="department" class="form-label">Department</label>
+                <select class="form-select" id="department" name="department" required>
+                    <option value="">Select Department</option>
+                    <option value="Cardiology">Cardiology</option>
+                    <option value="Dermatology">Dermatology</option>
+                    <option value="Gastroenterology">Gastroenterology</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="doctor" class="form-label">Doctor</label>
+                <select class="form-select" id="doctor" name="doctor" required>
+                    <option value="">Select Doctor</option>
+                    <option value="{{ doctor.id }}">
+
+
+
+
+
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Book Appointment</button>
+        </form>
+    </div>
+{% endblock %}

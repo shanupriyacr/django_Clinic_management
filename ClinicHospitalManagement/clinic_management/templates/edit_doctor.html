@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Edit Doctor{% endblock %}
+{% block content %}
+
+    <div class="container">
+        <h2>Edit Doctor</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="name" class="form-label">Doctor Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ doctor.name }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="department" class="form-label">Department</label>
+                <select class="form-select" id="department" name="department" required>
+                    {% for department in departments %}
+                        <option value="{{ department.name }}"></option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="photo" class="form-label">Doctor's Photo</label>
+                <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
+            </div>
+
+            <div class="mb-3">
+                <label for="qualification" class="form-label">Qualification</label>
+                <input type="text" class="form-control" id="qualification" name="qualification" value="{{ doctor.qualification }}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+    </div>
+{% endblock %}
